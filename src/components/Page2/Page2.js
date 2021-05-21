@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Page2.css';
 import { seats } from './seats';
+
 import { Button } from 'antd';
+import SeatButton from './SeatButton/SeatButton';
 
 const Page2 = (props) => {
   return (
@@ -14,18 +16,9 @@ const Page2 = (props) => {
             cords: { x, y },
             reserved,
           } = seat;
-          const reservedClass = `${reserved ? 'seat-btn--reserved' : ''}`;
 
           return (
-            <Button
-              htmlType='button'
-              className={`seat-btn seats__seat-btn ${reservedClass}`}
-              key={id}
-              disabled={reserved}
-              style={{ gridRow: x + 1, gridColumn: y + 1 }}
-            >
-              {' '}
-            </Button>
+            <SeatButton id={id} row={x + 1} col={y + 1} reserved={reserved} />
           );
         })}
       </div>

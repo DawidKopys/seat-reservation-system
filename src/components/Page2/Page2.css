@@ -4,26 +4,6 @@
   padding-top: 150px;
 }
 
-/* Seat Buttons */
-.seat-btn {
-  background-color: transparent;
-  border: 1px solid #212529;
-  border-radius: 0;
-}
-
-.seat-btn--reserved {
-  background-color: #474747 !important;
-  border: 1px solid #212529 !important;
-}
-
-.seat-btn--chosen {
-  background-color: #ff8a05;
-}
-
-/* .btn:not(:disabled) {
-  cursor: pointer;
-} */
-
 /*** Seats section ***/
 .seats {
   display: grid;
