@@ -1,0 +1,32 @@
+.seats {
+  width: 815px; /* 55px * 15 cols */
+  /* height: 550px;  55px * 10 rows */
+  margin: 0 auto;
+  padding-top: 150px;
+  display: grid;
+  grid-template-columns: repeat(15, 45px);
+  grid-template-rows: repeat(10, 45px);
+  gap: 10px;
+}
+
+.positioned {
+  grid-row: 2;
+  grid-column: 4;
+}
+
+.btn:not(:disabled) {
+  cursor: pointer;
+}
+
+.seats__seat-btn {
+  background-color: transparent;
+  border: 1px solid #212529;
+}
+
+.seats__seat-btn:disabled {
+  background-color: #474747;
+}
+
+.seats__seat-btn--chosen {
+  background-color: #ff8a05;
+}
