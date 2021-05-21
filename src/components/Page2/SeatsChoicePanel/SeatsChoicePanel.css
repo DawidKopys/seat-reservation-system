@@ -1,0 +1,10 @@
+.seats {
+  display: grid;
+  grid-template-columns: repeat(15, 45px);
+  grid-template-rows: repeat(10, 45px);
+  gap: 10px;
+}
+
+.seats__seat-btn {
+  height: 100%;
+}

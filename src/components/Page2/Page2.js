@@ -1,27 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './Page2.css';
-import { seats } from './seats';
 
 import { Button } from 'antd';
-import SeatButton from './SeatButton/SeatButton';
+import SeatsChoicePanel from './SeatsChoicePanel/SeatsChoicePanel';
 
-const Page2 = (props) => {
+const Page2 = () => {
   return (
     <div className='seats-choice-container'>
-      <div className='seats'>
-        {seats.map((seat) => {
-          const {
-            id,
-            cords: { x, y },
-            reserved,
-          } = seat;
-
-          return (
-            <SeatButton id={id} row={x + 1} col={y + 1} reserved={reserved} />
-          );
-        })}
-      </div>
+      <SeatsChoicePanel />
       <div className='legend seats-choice-container__legend'>
         <div className='legend__item'>
           <div className={`seat-btn legend__seat-btn`} />
