@@ -5,6 +5,8 @@ import './SeatsChoicePanel.css';
 import { seats } from './seats';
 import SeatButton from '../SeatButton/SeatButton';
 
+const chosenSeats = ['s46', 's47'];
+
 const SeatsChoicePanel = () => {
   return (
     <div className='seats'>
@@ -15,8 +17,17 @@ const SeatsChoicePanel = () => {
           reserved,
         } = seat;
 
+        const chosen = chosenSeats.includes(id);
+
         return (
-          <SeatButton id={id} row={x + 1} col={y + 1} reserved={reserved} />
+          <SeatButton
+            key={id}
+            id={id}
+            row={x + 1}
+            col={y + 1}
+            reserved={reserved}
+            chosen={chosen}
+          />
         );
       })}
     </div>

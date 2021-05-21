@@ -10,5 +10,5 @@
 }
 
 .seat-btn--chosen {
-  background-color: #ff8a05;
+  background-color: #ff8a05 !important;
 }

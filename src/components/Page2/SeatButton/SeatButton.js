@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import './SeatButton.css';
 import { Button } from 'antd';
 
-const SeatButton = ({ id, row, col, reserved, picked }) => {
+const SeatButton = ({ id, row, col, reserved, chosen }) => {
   const reservedClass = `${reserved ? 'seat-btn--reserved' : ''}`;
+  const chosenClass = `${chosen ? 'seat-btn--chosen' : ''}`;
 
   return (
     <Button
       htmlType='button'
-      className={`seat-btn seats__seat-btn ${reservedClass}`}
-      key={id}
+      className={`seat-btn seats__seat-btn ${reservedClass} ${chosenClass}`}
       disabled={reserved}
       style={{ gridRow: row, gridColumn: col }}
     >
@@ -24,7 +24,7 @@ SeatButton.propTypes = {
   row: PropTypes.number.isRequired,
   col: PropTypes.number.isRequired,
   reserved: PropTypes.bool.isRequired,
-  picked: PropTypes.bool.isRequired,
+  chosen: PropTypes.bool.isRequired,
 };
 
 export default SeatButton;
