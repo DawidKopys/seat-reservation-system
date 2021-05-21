@@ -1,1 +1,6 @@
 @import '~antd/dist/antd.css';
+
+.ant-btn,
+.ant-input-number {
+  border-color: #212529;
+}
