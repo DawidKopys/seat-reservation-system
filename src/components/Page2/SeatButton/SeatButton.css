@@ -2,6 +2,7 @@
   background-color: transparent;
   border: 1px solid #212529;
   border-radius: 0;
+  transition: background-color 0.1s ease-out;
 }
 
 .seat-btn--reserved {
