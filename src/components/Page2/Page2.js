@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './Page2.css';
 
 import { Button } from 'antd';
-import SeatsChoicePanel from './SeatsChoicePanel/SeatsChoicePanel';
+import SeatsGrid from './SeatsGrid/SeatsGrid';
 
 const Page2 = ({ nextStep }) => {
   const [seats, setSeats] = useState([]);
@@ -21,9 +21,11 @@ const Page2 = ({ nextStep }) => {
   };
 
   return (
-    <div className='seats-choice-container'>
-      <SeatsChoicePanel seats={seats} loading={loading} />
-      <div className='legend seats-choice-container__legend'>
+    <div className='seats-panel'>
+      <div className='seats-grid-wrapper'>
+        <SeatsGrid seats={seats} loading={loading} />
+      </div>
+      <div className='legend seats-panel__legend'>
         <div className='legend__item'>
           <div className={`seat-btn legend__seat-btn`} />
           Miejsca dostępne

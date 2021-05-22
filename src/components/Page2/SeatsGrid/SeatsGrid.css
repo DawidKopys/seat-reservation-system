@@ -3,15 +3,8 @@
   grid-template-columns: repeat(15, 45px);
   grid-template-rows: repeat(10, 45px);
   gap: 10px;
-  position: relative;
 }
 
 .seats__seat-btn {
   height: 100%;
-}
-
-.seats__loading-indicator {
-  position: absolute;
-  top: 50%;
-  left: 50%;
 }

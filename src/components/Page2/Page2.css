@@ -1,11 +1,15 @@
-.seats-choice-container {
+.seats-panel {
   width: 815px; /* 15 * 45px (column width) +  14 * 10px (gap)*/
   margin: 0 auto;
   padding-top: 150px;
 }
 
+.seats-grid-wrapper {
+  height: 540px; /* 10 * 45px (row height) +  9 * 10px (gap)*/
+}
+
 /*** Legend section ***/
-.seats-choice-container__legend {
+.seats-panel__legend {
   margin-top: 50px;
 }
 
