@@ -1,13 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './SeatsChoicePanel.css';
 
 import { seats } from './seats';
 import SeatButton from '../SeatButton/SeatButton';
 
-const chosenSeats = ['s46', 's47'];
-
 const SeatsChoicePanel = () => {
+  const [selectedSeats, setSelectedSeats] = useState(['s46', 's47']);
+
+  const deselectSeat = (id) => {
+    setSelectedSeats((prevSelectedSeats) =>
+      prevSelectedSeats.filter((seat) => seat !== id)
+    );
+  };
+
+  const selectSeat = (id) => {
+    if (selectedSeats.length < 2) {
+      setSelectedSeats([...selectedSeats, id]);
+    }
+  };
+
   return (
     <div className='seats'>
       {seats.map((seat) => {
@@ -17,7 +29,7 @@ const SeatsChoicePanel = () => {
           reserved,
         } = seat;
 
-        const chosen = chosenSeats.includes(id);
+        const selected = selectedSeats.includes(id);
 
         return (
           <SeatButton
@@ -26,7 +38,9 @@ const SeatsChoicePanel = () => {
             row={x + 1}
             col={y + 1}
             reserved={reserved}
-            chosen={chosen}
+            selected={selected}
+            selectSeat={selectSeat}
+            deselectSeat={deselectSeat}
           />
         );
       })}

@@ -19,7 +19,7 @@ const Page2 = () => {
           Miejsca zarezerwowane
         </div>
         <div className='legend__item'>
-          <div className={`seat-btn legend__seat-btn seat-btn--chosen`} />
+          <div className={`seat-btn legend__seat-btn seat-btn--selected`} />
           Twój wybór
         </div>
         <Button htmlType='button' className='legend__confirmation-btn'>
