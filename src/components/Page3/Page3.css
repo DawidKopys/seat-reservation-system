@@ -1,0 +1,19 @@
+.summary {
+  width: 815px;
+  margin: 0 auto;
+  padding-top: 150px;
+}
+
+.summary__title {
+  margin-top: 1.2em;
+}
+
+.summary-list__item {
+  list-style-type: none;
+  font-size: 20px;
+}
+
+.summary-list__header {
+  margin: 0 !important;
+  font-size: 22px;
+}

@@ -1,5 +1,5 @@
 .seats-choice-container {
-  width: 815px; /* 55px * 15 cols */
+  width: 815px; /* 15 * 45px (column width) +  14 * 10px (gap)*/
   margin: 0 auto;
   padding-top: 150px;
 }

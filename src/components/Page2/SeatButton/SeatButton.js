@@ -30,9 +30,7 @@ const SeatButton = ({
       disabled={reserved}
       style={{ gridRow: row, gridColumn: col }}
       onClick={handleClick}
-    >
-      {' '}
-    </Button>
+    />
   );
 };
 

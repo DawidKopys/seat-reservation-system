@@ -5,7 +5,7 @@ import './Page2.css';
 import { Button } from 'antd';
 import SeatsChoicePanel from './SeatsChoicePanel/SeatsChoicePanel';
 
-const Page2 = () => {
+const Page2 = ({ nextStep }) => {
   return (
     <div className='seats-choice-container'>
       <SeatsChoicePanel />
@@ -22,7 +22,11 @@ const Page2 = () => {
           <div className={`seat-btn legend__seat-btn seat-btn--selected`} />
           Twój wybór
         </div>
-        <Button htmlType='button' className='legend__confirmation-btn'>
+        <Button
+          htmlType='button'
+          className='legend__confirmation-btn'
+          onClick={nextStep}
+        >
           Rezerwuj
         </Button>
       </div>
@@ -30,6 +34,8 @@ const Page2 = () => {
   );
 };
 
-Page2.propTypes = {};
+Page2.propTypes = {
+  nextStep: PropTypes.func.isRequired,
+};
 
 export default Page2;

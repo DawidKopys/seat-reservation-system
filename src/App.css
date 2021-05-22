@@ -4,3 +4,11 @@
 .ant-input-number {
   border-color: #212529;
 }
+
+.ant-btn:empty {
+  display: block;
+  width: unset;
+  visibility: visible;
+  content: unset;
+}
+
