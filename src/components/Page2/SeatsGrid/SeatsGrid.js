@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './SeatsGrid.css';
+import { connect } from 'react-redux';
 
 import SeatButton from '../SeatButton/SeatButton';
 import { withLoader } from '../../../hocs/withLoader/withLoader';
@@ -52,4 +53,9 @@ SeatsGrid.propTypes = {
   seats: PropTypes.array.isRequired,
 };
 
-export default withLoader(SeatsGrid);
+const mapStateToProps = (store) => ({
+  seats: store.seats,
+  loading: store.loading,
+});
+
+export default connect(mapStateToProps, null)(withLoader(SeatsGrid));

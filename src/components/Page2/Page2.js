@@ -1,29 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './Page2.css';
+import { connect } from 'react-redux';
+import { getSeats } from '../../redux/seats';
 
 import { Button } from 'antd';
 import SeatsGrid from './SeatsGrid/SeatsGrid';
 
-const Page2 = ({ nextStep }) => {
-  const [seats, setSeats] = useState([]);
-  const [loading, setLoading] = useState(true);
-
+const Page2 = ({ nextStep, getSeats }) => {
   useEffect(() => {
     getSeats();
-  }, []);
-
-  const getSeats = async () => {
-    const response = await fetch('http://localhost:3000/seats');
-    const json = await response.json();
-    setSeats(json);
-    setLoading(false);
-  };
+  }, [getSeats]);
 
   return (
     <div className='seats-panel'>
       <div className='seats-grid-wrapper'>
-        <SeatsGrid seats={seats} loading={loading} />
+        <SeatsGrid />
       </div>
       <div className='legend seats-panel__legend'>
         <div className='legend__item'>
@@ -54,4 +46,6 @@ Page2.propTypes = {
   nextStep: PropTypes.func.isRequired,
 };
 
-export default Page2;
+const mapDispatchToProps = { getSeats };
+
+export default connect(null, mapDispatchToProps)(Page2);
