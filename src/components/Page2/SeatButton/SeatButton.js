@@ -3,8 +3,10 @@ import PropTypes from 'prop-types';
 import './SeatButton.css';
 import { Button } from 'antd';
 
+import { connect } from 'react-redux';
+import { selectSeat, deselectSeat } from '../../../redux/seats';
+
 const SeatButton = ({
-  id,
   row,
   col,
   reserved,
@@ -17,9 +19,9 @@ const SeatButton = ({
 
   const handleClick = () => {
     if (selected) {
-      deselectSeat(id);
+      deselectSeat();
     } else {
-      selectSeat(id);
+      selectSeat();
     }
   };
 
@@ -44,4 +46,21 @@ SeatButton.propTypes = {
   deselectSeat: PropTypes.func.isRequired,
 };
 
-export default SeatButton;
+const mapStateToProps = (state, ownProps) => {
+  const { selectedSeats } = state;
+  const { id } = ownProps;
+
+  const selected = selectedSeats.includes(id);
+  return { selected };
+};
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  const { id } = ownProps;
+
+  return {
+    selectSeat: () => dispatch(selectSeat(id)),
+    deselectSeat: () => dispatch(deselectSeat(id)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SeatButton);
