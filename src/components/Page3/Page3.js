@@ -1,16 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './Page3.css';
+import { connect } from 'react-redux';
+
 import { Typography } from 'antd';
 const { Title } = Typography;
 
-const listContent = [
-  'rząd x1, miejcse y1 (id1)',
-  'rząd x2, miejcse y2 (id2)',
-  'rząd x3, miejcse y3 (id3)',
-];
-
-const Page3 = (props) => {
+const Page3 = ({ selectedSeats }) => {
   return (
     <div className='summary'>
       <Title level={2} className='summary__title'>
@@ -18,8 +14,10 @@ const Page3 = (props) => {
       </Title>
 
       <p className='summary-list__header'>Wybrałeś miejsca:</p>
-      {listContent.map((item) => (
-        <li className='summary-list__item'>- {item}</li>
+      {selectedSeats.map((seat) => (
+        <li key={seat.id} className='summary-list__item'>
+          {`- rząd ${seat.row}, miejsce ${seat.col} (${seat.id})`}
+        </li>
       ))}
 
       <Title level={4} className='summary__title'>
@@ -29,6 +27,12 @@ const Page3 = (props) => {
   );
 };
 
-Page3.propTypes = {};
+Page3.propTypes = {
+  selectedSeats: PropTypes.array.isRequired,
+};
 
-export default Page3;
+const mapStateToProps = (state) => ({
+  selectedSeats: state.selectedSeats,
+});
+
+export default connect(mapStateToProps, null)(Page3);

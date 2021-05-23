@@ -27,7 +27,10 @@ export const deselectSeat = (seatId) => ({
 const initialState = {
   seats: [],
   loading: true,
-  selectedSeats: ['s46', 's47'],
+  selectedSeats: [
+    { id: 's46', row: 5, col: 7 },
+    { id: 's47', row: 5, col: 8 },
+  ],
 };
 
 const seatsReducer = (state = initialState, action) => {
@@ -36,21 +39,29 @@ const seatsReducer = (state = initialState, action) => {
       return { ...state, seats: action.payload, loading: false };
     }
     case 'SELECT_SEAT': {
-      const currSelectedSeats = state.selectedSeats;
-      const newSelectedSeatId = action.payload;
-      if (currSelectedSeats.length < 2) {
+      const selectedSeatId = action.payload;
+      const selectedSeat = state.seats.find(
+        (seat) => seat.id === selectedSeatId
+      );
+
+      const newSelectedSeat = {
+        id: selectedSeat.id,
+        row: selectedSeat.cords.x + 1,
+        col: selectedSeat.cords.y + 1,
+      };
+
+      if (state.selectedSeats.length < 2) {
         return {
           ...state,
-          selectedSeats: [...currSelectedSeats, newSelectedSeatId],
+          selectedSeats: [...state.selectedSeats, newSelectedSeat],
         };
       }
       return state;
     }
     case 'DESELECT_SEAT': {
-      const currSelectedSeats = state.selectedSeats;
       const seatIdToDeselect = action.payload;
-      const newSelectedSeats = currSelectedSeats.filter(
-        (seatId) => seatId !== seatIdToDeselect
+      const newSelectedSeats = state.selectedSeats.filter(
+        (seat) => seat.id !== seatIdToDeselect
       );
       return { ...state, selectedSeats: newSelectedSeats };
     }

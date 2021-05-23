@@ -37,7 +37,6 @@ const SeatButton = ({
 };
 
 SeatButton.propTypes = {
-  id: PropTypes.string.isRequired,
   row: PropTypes.number.isRequired,
   col: PropTypes.number.isRequired,
   reserved: PropTypes.bool.isRequired,
@@ -50,7 +49,7 @@ const mapStateToProps = (state, ownProps) => {
   const { selectedSeats } = state;
   const { id } = ownProps;
 
-  const selected = selectedSeats.includes(id);
+  const selected = selectedSeats.some((seat) => seat.id === id);
   return { selected };
 };
 
