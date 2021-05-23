@@ -112,8 +112,4 @@ const seatsReducer = (state = initialState, action) => {
 
 const store = createStore(seatsReducer, applyMiddleware(thunk));
 
-store.subscribe(() => {
-  console.log('store:', store.getState());
-});
-
 export default store;
