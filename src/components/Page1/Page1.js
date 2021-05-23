@@ -1,18 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './Page1.css';
+import { connect } from 'react-redux';
+import { setAdjecent, setNumberOfSeats } from '../../redux/seats';
+
 import { Form, InputNumber, Button, Checkbox } from 'antd';
 
-const Page1 = ({ nextStep }) => {
+const Page1 = ({ nextStep, setNumberOfSeats, setAdjecent }) => {
   const initialValues = {
     seatsNumber: 1,
     adjecentSeats: true,
   };
 
+  const handleFinish = ({ seatsNumber, adjecentSeats }) => {
+    setNumberOfSeats(seatsNumber);
+    setAdjecent(adjecentSeats);
+    nextStep();
+  };
+
   return (
     <Form
       className='center-container'
-      onFinish={nextStep}
+      onFinish={handleFinish}
       requiredMark={false}
       initialValues={initialValues}
     >
@@ -43,6 +52,13 @@ const Page1 = ({ nextStep }) => {
 
 Page1.propTypes = {
   nextStep: PropTypes.func.isRequired,
+  setNumberOfSeats: PropTypes.func.isRequired,
+  setAdjecent: PropTypes.func.isRequired,
 };
 
-export default Page1;
+const mapDispatchToProps = {
+  setNumberOfSeats,
+  setAdjecent,
+};
+
+export default connect(null, mapDispatchToProps)(Page1);
